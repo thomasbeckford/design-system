@@ -23,5 +23,6 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 A custom design system using tailwind and class-variance-authority to create variants:
 
 
-https://github.com/thomasbeckford/design-system/assets/28713861/6566dcb8-760a-44f8-bd5e-7f31e947f10f
 
+
+![Screenshot 2023-08-15 at 7 56 37 PM](https://github.com/thomasbeckford/design-system/assets/28713861/7fbe3f1b-d861-4b2a-92d5-726acd6d5de6)
