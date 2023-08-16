@@ -83,6 +83,7 @@ export default function Buttons() {
             isLoading
             loadingText="Submitting..."
             outline
+            spinnerPlacement="end"
           >
             Loading
           </Button>
