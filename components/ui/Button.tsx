@@ -1,18 +1,13 @@
 import React from 'react'
 import { cva, VariantProps } from 'class-variance-authority'
-
-interface ButtonOrLinkProps {
-  onClick?: () => void
-  children: React.ReactNode
-  addClass?: Record<string, string | boolean | undefined>
-}
+import Spinner from '@/public/icons/spinner.svg'
 
 export interface Props
   extends ButtonOrLinkProps,
     VariantProps<typeof buttonStyles> {}
 
 const buttonStyles = cva(
-  'px-4 py-2 rounded-md font-semibold  transition-all duration-200 ease-in-out active:scale-95',
+  'rounded-md font-semibold  transition-all duration-200 ease-in-out active:scale-95  ',
   {
     variants: {
       intent: {
@@ -23,7 +18,8 @@ const buttonStyles = cva(
       },
 
       size: {
-        small: 'px-2 py-1 text-sm',
+        small: 'px-2 py-1 text-xs',
+        medium: 'px-4 py-2 text-base',
         large: 'px-6 py-3 text-lg',
       },
 
@@ -35,25 +31,65 @@ const buttonStyles = cva(
       fullWidth: {
         true: 'w-full active:scale-95 ',
       },
+      isLoading: {
+        true: 'opacity-50 pointer-events-none',
+      },
     },
     defaultVariants: {
       intent: 'primary',
-      size: 'small',
+      size: 'medium',
       outline: false,
       fullWidth: false,
     },
   }
 )
 
+interface ButtonOrLinkProps {
+  children: React.ReactNode
+  onClick?: () => void
+  spinnerPlacement?: 'start' | 'end'
+  loadingText?: string
+  leftIcon?: React.ReactNode
+  addClass?: Record<string, string | boolean | undefined>
+}
+
 const Button: React.FC<Props> = ({
   intent,
   size,
   fullWidth,
   outline,
+  isLoading,
+  spinnerPlacement = 'start',
+  loadingText = 'Loading...',
+  leftIcon,
   children,
   onClick,
   addClass,
 }: Props) => {
+  const WithLoadingIcon = (props: { iconSize: string }) => {
+    const SpinnerLoader = () => (
+      <Spinner className={`animate-spin ${props.iconSize}`} />
+    )
+
+    return (
+      <div className="flex items-center gap-2 justify-center">
+        {spinnerPlacement === 'start' && <SpinnerLoader />}
+        <span>{loadingText}</span>
+        {spinnerPlacement === 'end' && <SpinnerLoader />}
+      </div>
+    )
+  }
+
+  const WithLeftIcon = (props: { iconSize: string }) => (
+    <div className="flex items-center gap-3 justify-center">
+      <span className={`${props.iconSize} fill-white flex `}>{leftIcon}</span>
+      <span>{children}</span>
+    </div>
+  )
+
+  const iconSize =
+    size === 'large' ? 'h-8 w-8' : size === 'small' ? 'h-5 w-5' : 'h-6 w-6'
+
   return (
     <button
       className={buttonStyles({
@@ -61,11 +97,18 @@ const Button: React.FC<Props> = ({
         size,
         fullWidth,
         outline,
+        isLoading,
         ...addClass,
       })}
       onClick={onClick}
     >
-      {children}
+      {isLoading ? (
+        <WithLoadingIcon iconSize={iconSize} />
+      ) : leftIcon ? (
+        <WithLeftIcon iconSize={iconSize} />
+      ) : (
+        children
+      )}
     </button>
   )
 }
