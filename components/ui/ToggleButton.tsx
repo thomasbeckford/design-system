@@ -1,17 +1,36 @@
 import React, { useState } from 'react'
+import { cva, VariantProps } from 'class-variance-authority'
 
-interface ToggleButtonProps {
+interface ToggleButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>,
+    VariantProps<typeof buttonStyles> {
   defaultState?: boolean
   label: string
   onToggle?: (state: boolean) => void
-  addClass?: string // New prop for adding custom classes
+  addClass?: Record<string, string | boolean | undefined>
 }
+
+const buttonStyles = cva(
+  'font-bold py-2 px-4 rounded transition-all duration-200 ease-in-out',
+  {
+    variants: {
+      isActive: {
+        true: 'bg-success hover:bg-stone-700 text-white',
+        false: 'bg-primary hover:bg-primary-700 text-white',
+      },
+    },
+    defaultVariants: {
+      isActive: false,
+    },
+  }
+)
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({
   defaultState = false,
   label,
   onToggle,
   addClass,
+  ...rest
 }) => {
   const [isActive, setIsActive] = useState(defaultState)
 
@@ -22,15 +41,13 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
     }
   }
 
-  const buttonClasses = `
-    bg-${isActive ? 'success' : 'primary'}  hover:bg-${
-    isActive ? 'success' : 'stone'
-  }-700 text-white font-bold py-2 px-4 rounded
-    ${addClass || ''} // Add custom classes here
-  `
+  const buttonClasses = buttonStyles({
+    isActive,
+    ...addClass,
+  })
 
   return (
-    <button className={buttonClasses} onClick={handleClick}>
+    <button className={buttonClasses} onClick={handleClick} {...rest}>
       {isActive ? `${label} On` : `${label} Off`}
     </button>
   )

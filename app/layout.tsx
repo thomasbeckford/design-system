@@ -45,6 +45,14 @@ export default function RootLayout({
                     Toggle Buttons
                   </Link>
                 </li>
+                <li className="mb-2">
+                  <Link
+                    href="spinners"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Spinners
+                  </Link>
+                </li>
               </ul>
             </aside>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { cva, VariantProps } from 'class-variance-authority'
-import Spinner from '@/public/icons/spinner.svg'
+import Spinner from '@ui/Spinner'
 
 export interface Props
   extends ButtonOrLinkProps,
@@ -18,9 +18,9 @@ const buttonStyles = cva(
       },
 
       size: {
-        small: 'px-2 py-1 text-xs',
-        medium: 'px-4 py-2 text-base',
-        large: 'px-6 py-3 text-lg',
+        sm: 'px-[0.75rem] h-[2rem] text-[0.875rem]',
+        md: 'px-[1rem] h-[2.5rem] text-[1rem]',
+        lg: 'px-[1.5rem] h-[3rem] text-[1.125rem]',
       },
 
       outline: {
@@ -37,7 +37,7 @@ const buttonStyles = cva(
     },
     defaultVariants: {
       intent: 'primary',
-      size: 'medium',
+      size: 'md',
       outline: false,
       fullWidth: false,
     },
@@ -66,29 +66,24 @@ const Button: React.FC<Props> = ({
   onClick,
   addClass,
 }: Props) => {
-  const WithLoadingIcon = (props: { iconSize: string }) => {
-    const SpinnerLoader = () => (
-      <Spinner className={`animate-spin ${props.iconSize}`} />
-    )
+  const iconSize = `w-[1em] h-[1em] flex self-center`
 
+  const WithLoadingIcon = () => {
     return (
       <div className="flex items-center gap-2 justify-center">
-        {spinnerPlacement === 'start' && <SpinnerLoader />}
+        {spinnerPlacement === 'start' && <Spinner />}
         <span>{loadingText}</span>
-        {spinnerPlacement === 'end' && <SpinnerLoader />}
+        {spinnerPlacement === 'end' && <Spinner />}
       </div>
     )
   }
 
-  const WithLeftIcon = (props: { iconSize: string }) => (
-    <div className="flex items-center gap-3 justify-center">
-      <span className={`${props.iconSize} fill-white flex `}>{leftIcon}</span>
+  const WithLeftIcon = () => (
+    <div className="flex items-center gap-2 justify-center h-full">
+      <span className={`${iconSize} fill-white flex `}>{leftIcon}</span>
       <span>{children}</span>
     </div>
   )
-
-  const iconSize =
-    size === 'large' ? 'h-8 w-8' : size === 'small' ? 'h-5 w-5' : 'h-6 w-6'
 
   return (
     <button
@@ -102,13 +97,7 @@ const Button: React.FC<Props> = ({
       })}
       onClick={onClick}
     >
-      {isLoading ? (
-        <WithLoadingIcon iconSize={iconSize} />
-      ) : leftIcon ? (
-        <WithLeftIcon iconSize={iconSize} />
-      ) : (
-        children
-      )}
+      {isLoading ? <WithLoadingIcon /> : leftIcon ? <WithLeftIcon /> : children}
     </button>
   )
 }

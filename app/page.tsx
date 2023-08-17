@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-
 export default function Home() {
-  const [selectedComponent, setSelectedComponent] = useState('button')
-
-  return <main></main>
+  return (
+    <main>
+      <h1>Home</h1>
+    </main>
+  )
 }

@@ -13,23 +13,23 @@ export default function Buttons() {
       <div className="space-y-5">
         <p>Small</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" size="small" onClick={handleClick}>
+          <Button intent="secondary" size="sm" onClick={handleClick}>
             Small Secondary
           </Button>
           <Button
             intent="primary"
-            size="small"
+            size="sm"
             onClick={handleClick}
             leftIcon={<Twitter />}
           >
             Left
           </Button>
-          <Button intent="secondary" size="small" onClick={handleClick} outline>
+          <Button intent="secondary" size="sm" onClick={handleClick} outline>
             Small Primary Outline
           </Button>
           <Button
             intent="primary"
-            size="small"
+            size="sm"
             onClick={handleClick}
             isLoading
             loadingText="Still loading..."
@@ -62,23 +62,23 @@ export default function Buttons() {
 
         <p>Large</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" size="large" onClick={handleClick}>
+          <Button intent="secondary" size="lg" onClick={handleClick}>
             Large Primary
           </Button>
           <Button
             intent="primary"
-            size="large"
+            size="lg"
             onClick={handleClick}
             leftIcon={<Home />}
           >
-            Left
+            Email
           </Button>
-          <Button intent="secondary" size="large" onClick={handleClick} outline>
+          <Button intent="secondary" size="lg" onClick={handleClick} outline>
             Large Primary Outline
           </Button>
           <Button
             intent="primary"
-            size="large"
+            size="lg"
             onClick={handleClick}
             isLoading
             loadingText="Submitting..."
@@ -91,12 +91,13 @@ export default function Buttons() {
 
         <p>Full width</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" size="large" fullWidth>
+          <Button intent="secondary" size="lg" fullWidth>
             Secondary Button
           </Button>
           <Button
             intent="primary"
             fullWidth
+            size="lg"
             onClick={handleClick}
             leftIcon={<Home />}
           >
@@ -111,6 +112,7 @@ export default function Buttons() {
             intent="primary"
             onClick={handleClick}
             isLoading
+            size="lg"
             fullWidth
             loadingText="Loading..."
           >

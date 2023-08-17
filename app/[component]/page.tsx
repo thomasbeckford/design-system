@@ -2,6 +2,7 @@
 import { useParams } from 'next/navigation'
 import Buttons from '@components/Buttons'
 import Inputs from '@components/Inputs'
+import Spinners from '@components/Spinners'
 import ToggleButtons from '@components/ToggleButtons'
 
 export default function Component() {
@@ -16,8 +17,13 @@ export default function Component() {
         return <Inputs />
 
       case 'toggleButtons':
-      default:
         return <ToggleButtons />
+
+      case 'spinners':
+        return <Spinners />
+
+      default:
+        return <div>No</div>
     }
   }
 
