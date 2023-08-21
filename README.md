@@ -1,4 +1,5 @@
 
-## Working on my design system
+## Working on a Design System using figma
 
-![Screenshot 2023-08-17 at 11 08 34 AM](https://github.com/thomasbeckford/design-system/assets/28713861/22387aaa-5b0c-4f04-b390-690d31653ddb)
+
+![Screenshot 2023-08-21 at 11 42 57 AM](https://github.com/thomasbeckford/design-system/assets/28713861/59793a18-fa05-42cf-9190-04d715d2eacc)
