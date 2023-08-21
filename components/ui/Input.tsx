@@ -9,20 +9,21 @@ interface InputProps
   addClass?: Record<string, string | boolean | undefined>
   isDisabled?: boolean
   leftIcon?: React.ReactNode
+  autoFocus?: boolean
 }
 
 const inputStyles = cva(
-  'rounded-md transition-all duration-200 ease-in-out text-white rounded-[8px] w-full focus:outline-none focus:ring-[1px] focus:ring-[#1D9384]',
+  'rounded-md transition-all duration-200 ease-in-out text-white  w-full focus:outline-none focus:ring-[1px] focus:ring-[#1D9384]',
   {
     variants: {
       intent: {
-        default: 'bg-[#374151]',
+        default: 'bg-darkBorderBox',
         outlined: 'border',
       },
       size: {
-        sm: 'py-1 px-2 text-sm',
-        md: 'py-2 px-3 text-base',
-        lg: 'py-3 px-4 text-lg',
+        sm: 'py-2 px-3 text-sm',
+        md: 'py-3 px-4 text-base',
+        lg: 'py-4 px-5 text-lg',
       },
       isDisabled: {
         true: 'opacity-50 pointer-events-none',
@@ -43,6 +44,7 @@ const Input: React.FC<InputProps> = ({
   addClass,
   isDisabled,
   leftIcon,
+  autoFocus,
   ...rest
 }: InputProps) => {
   const inputClasses = inputStyles({
@@ -53,9 +55,13 @@ const Input: React.FC<InputProps> = ({
   })
 
   const WithLeftIcon = () => (
-    <div className={`${inputClasses} flex h-full`}>
-      <span className={`${iconSize} fill-white flex `}>{leftIcon}</span>
-      <input {...rest} className={inputClasses} />
+    <div className={`relative flex h-full`}>
+      <span
+        className={`absolute  w-12 pl-2 flex items-center ${iconSize} fill-white`}
+      >
+        {leftIcon}
+      </span>
+      <input {...rest} className={`${inputClasses} pl-9 `} />
     </div>
   )
 
@@ -64,7 +70,7 @@ const Input: React.FC<InputProps> = ({
       {leftIcon ? (
         <WithLeftIcon />
       ) : (
-        <input className={inputClasses} {...rest} />
+        <input className={inputClasses} {...rest} autoFocus={autoFocus} />
       )}
     </>
   )

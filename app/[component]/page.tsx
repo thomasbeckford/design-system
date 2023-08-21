@@ -3,7 +3,7 @@ import { useParams } from 'next/navigation'
 import Buttons from '@components/Buttons'
 import Inputs from '@components/Inputs'
 import Spinners from '@components/Spinners'
-import ToggleButtons from '@components/ToggleButtons'
+import Switches from '@/components/Switches'
 
 export default function Component() {
   const { component } = useParams()
@@ -16,8 +16,8 @@ export default function Component() {
       case 'inputs':
         return <Inputs />
 
-      case 'toggleButtons':
-        return <ToggleButtons />
+      case 'switches':
+        return <Switches />
 
       case 'spinners':
         return <Spinners />
@@ -27,9 +27,5 @@ export default function Component() {
     }
   }
 
-  return (
-    <div className="bg-gray-700 flex-1 p-4 overflow-y-auto">
-      {getComponent()}
-    </div>
-  )
+  return <div className="flex-1 p-4 overflow-y-auto">{getComponent()}</div>
 }

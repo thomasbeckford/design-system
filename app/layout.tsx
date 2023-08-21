@@ -17,11 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-dark text-white min-h-screen`}>
-        <div className="container mx-auto p-4 flex flex-col h-full">
-          <h1 className="text-3xl font-bold mb-4">My Design System</h1>
+      <body className={`${inter.className} bg-bgDark text-white min-h-screen`}>
+        <div className=" mx-auto p-4 flex flex-col h-full">
+          <h1 className="customh1 text-red-300">Design System</h1>
           <div className="flex h-screen">
-            <aside className="bg-gray-800 text-white w-1/4 p-4">
+            <aside className=" text-white w-1/6 p-4">
               <h2 className="text-xl font-bold mb-4">Components</h2>
               <ul>
                 <li className="mb-2">
@@ -39,10 +39,10 @@ export default function RootLayout({
                 </li>
                 <li className="mb-2">
                   <Link
-                    href="toggleButtons"
+                    href="switches"
                     className="text-blue-500 hover:underline"
                   >
-                    Toggle Buttons
+                    Switches
                   </Link>
                 </li>
                 <li className="mb-2">

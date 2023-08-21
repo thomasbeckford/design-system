@@ -66,8 +66,6 @@ const Button: React.FC<Props> = ({
       <Spinner size={size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md'} />
     )
 
-    console.log('thesi', size)
-
     return (
       <div className="flex items-center gap-2 justify-center">
         {spinnerPlacement === 'start' && <SpinnerSize />}
@@ -79,8 +77,8 @@ const Button: React.FC<Props> = ({
 
   const WithLeftIcon = () => (
     <div className="flex items-center gap-2 justify-center h-full">
-      <span className={`${iconSize} fill-white flex `}>{leftIcon}</span>
-      <span>{children}</span>
+      <p className={`${iconSize} fill-white flex`}>{leftIcon}</p>
+      <p>{children}</p>
     </div>
   )
 
