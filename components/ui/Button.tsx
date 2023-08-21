@@ -7,39 +7,32 @@ export interface Props
     VariantProps<typeof buttonStyles> {}
 
 const buttonStyles = cva(
-  'rounded-md font-semibold  transition-all duration-200 ease-in-out active:scale-95  ',
+  'rounded-md transition-all duration-200 ease-in-out active:scale-95',
   {
     variants: {
       intent: {
-        primary:
-          'bg-primary border-primary text-primary hover:text-primary-dark hover:bg-primary-dark',
-        secondary:
-          'bg-secondary border-secondary text-secondary hover:text-secondary-dark hover:bg-secondary-dark',
+        primary: 'bg-[#1D9384]',
+        secondary: 'bg-[#374151]',
+        inverted: 'bg-[#60E6C526] text-[#60E6C5] ',
       },
-
       size: {
         sm: 'px-[0.75rem] h-[2rem] text-[0.875rem]',
         md: 'px-[1rem] h-[2.5rem] text-[1rem]',
         lg: 'px-[1.5rem] h-[3rem] text-[1.125rem]',
       },
 
-      outline: {
-        true: 'bg-transparent border hover:bg-transparent',
-        false: 'border-white text-white hover:text-white',
-      },
-
       fullWidth: {
-        true: 'w-full active:scale-95 ',
+        true: 'w-full active:scale-95',
       },
       isLoading: {
-        true: 'opacity-50 pointer-events-none',
+        true: 'pointer-events-none opacity-80',
       },
     },
     defaultVariants: {
       intent: 'primary',
       size: 'md',
-      outline: false,
       fullWidth: false,
+      isLoading: false,
     },
   }
 )
@@ -57,7 +50,7 @@ const Button: React.FC<Props> = ({
   intent,
   size,
   fullWidth,
-  outline,
+
   isLoading,
   spinnerPlacement = 'start',
   loadingText = 'Loading...',
@@ -69,11 +62,17 @@ const Button: React.FC<Props> = ({
   const iconSize = `w-[1em] h-[1em] flex self-center`
 
   const WithLoadingIcon = () => {
+    const SpinnerSize = () => (
+      <Spinner size={size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md'} />
+    )
+
+    console.log('thesi', size)
+
     return (
       <div className="flex items-center gap-2 justify-center">
-        {spinnerPlacement === 'start' && <Spinner />}
+        {spinnerPlacement === 'start' && <SpinnerSize />}
         <span>{loadingText}</span>
-        {spinnerPlacement === 'end' && <Spinner />}
+        {spinnerPlacement === 'end' && <SpinnerSize />}
       </div>
     )
   }
@@ -91,7 +90,6 @@ const Button: React.FC<Props> = ({
         intent,
         size,
         fullWidth,
-        outline,
         isLoading,
         ...addClass,
       })}

@@ -1,6 +1,8 @@
 {
-  "name": "design-system",
+  "name": "tebeck-design-system",
   "version": "0.1.0",
+  "description": "Design system for thomas beckford components",
+  "author": "Thomas Beckford",
   "private": true,
   "scripts": {
     "dev": "next dev",

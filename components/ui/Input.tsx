@@ -4,45 +4,70 @@ import { cva, VariantProps } from 'class-variance-authority'
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
     VariantProps<typeof inputStyles> {
-  variant?: 'default' | 'outlined'
-  size?: 'small' | 'medium' | 'large'
+  intent?: 'default'
+  size?: 'sm' | 'md' | 'lg'
   addClass?: Record<string, string | boolean | undefined>
+  isDisabled?: boolean
+  leftIcon?: React.ReactNode
 }
 
 const inputStyles = cva(
-  'rounded-md transition-all duration-200 ease-in-out text-black',
+  'rounded-md transition-all duration-200 ease-in-out text-white rounded-[8px] w-full focus:outline-none focus:ring-[1px] focus:ring-[#1D9384]',
   {
     variants: {
-      variant: {
-        default: 'bg-white',
+      intent: {
+        default: 'bg-[#374151]',
         outlined: 'border',
       },
       size: {
-        small: 'py-1 px-2 text-sm',
-        medium: 'py-2 px-3 text-base',
-        large: 'py-3 px-4 text-lg',
+        sm: 'py-1 px-2 text-sm',
+        md: 'py-2 px-3 text-base',
+        lg: 'py-3 px-4 text-lg',
+      },
+      isDisabled: {
+        true: 'opacity-50 pointer-events-none',
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'medium',
+      intent: 'default',
+      size: 'md',
     },
   }
 )
 
+const iconSize = `w-[1em] h-[1em] flex self-center`
+
 const Input: React.FC<InputProps> = ({
-  variant,
+  intent,
   size,
   addClass,
+  isDisabled,
+  leftIcon,
   ...rest
 }: InputProps) => {
   const inputClasses = inputStyles({
-    variant,
+    intent,
     size,
+    isDisabled,
     ...addClass,
   })
 
-  return <input className={inputClasses} {...rest} />
+  const WithLeftIcon = () => (
+    <div className={`${inputClasses} flex h-full`}>
+      <span className={`${iconSize} fill-white flex `}>{leftIcon}</span>
+      <input {...rest} className={inputClasses} />
+    </div>
+  )
+
+  return (
+    <>
+      {leftIcon ? (
+        <WithLeftIcon />
+      ) : (
+        <input className={inputClasses} {...rest} />
+      )}
+    </>
+  )
 }
 
 export default Input

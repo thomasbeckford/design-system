@@ -1,7 +1,6 @@
 import Button from '@ui/Button'
 import Card from '@ui/Card'
 import Twitter from '@/public/icons/twitter.svg'
-import Home from '@/public/icons/home.svg'
 
 export default function Buttons() {
   const handleClick = () => {
@@ -13,110 +12,118 @@ export default function Buttons() {
       <div className="space-y-5">
         <p>Small</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" size="sm" onClick={handleClick}>
-            Small Secondary
+          <Button intent="primary" size="sm" onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
+            intent="secondary"
             size="sm"
             onClick={handleClick}
             leftIcon={<Twitter />}
           >
-            Left
+            Button
           </Button>
-          <Button intent="secondary" size="sm" onClick={handleClick} outline>
-            Small Primary Outline
+          <Button intent="inverted" size="sm" onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="secondary" size="sm" onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
             size="sm"
             onClick={handleClick}
             isLoading
             loadingText="Still loading..."
-            outline
           >
-            Loading
+            Button
           </Button>
         </div>
 
         <p>Medium</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" onClick={handleClick}>
-            Medium Primary
-          </Button>
-          <Button intent="primary" onClick={handleClick} leftIcon={<Twitter />}>
-            Left
-          </Button>
-          <Button intent="secondary" onClick={handleClick} outline>
-            Medium Primary Outline
+          <Button intent="primary" onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
+            intent="secondary"
+            onClick={handleClick}
+            leftIcon={<Twitter />}
+          >
+            Button
+          </Button>
+          <Button intent="inverted" onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="secondary" onClick={handleClick}>
+            Button
+          </Button>
+          <Button
             onClick={handleClick}
             isLoading
-            loadingText="Loading..."
+            loadingText="Still loading..."
+            spinnerPlacement="end"
           >
-            Loading
+            Button
           </Button>
         </div>
 
         <p>Large</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" size="lg" onClick={handleClick}>
-            Large Primary
+          <Button intent="primary" size="lg" onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
+            intent="secondary"
             size="lg"
             onClick={handleClick}
-            leftIcon={<Home />}
+            leftIcon={<Twitter />}
           >
-            Email
+            Button
           </Button>
-          <Button intent="secondary" size="lg" onClick={handleClick} outline>
-            Large Primary Outline
+          <Button intent="inverted" size="lg" onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="secondary" size="lg" onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
             size="lg"
             onClick={handleClick}
             isLoading
-            loadingText="Submitting..."
-            outline
-            spinnerPlacement="end"
+            loadingText="Loading.."
           >
-            Loading
+            Button
           </Button>
         </div>
 
         <p>Full width</p>
         <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="secondary" size="lg" fullWidth>
-            Secondary Button
+          <Button intent="primary" size="lg" fullWidth onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
-            fullWidth
+            intent="secondary"
             size="lg"
+            fullWidth
             onClick={handleClick}
-            leftIcon={<Home />}
+            leftIcon={<Twitter />}
           >
-            Left
+            Button
           </Button>
-        </div>
-        <div className="flex gap-3 flex-col md:flex-row">
-          <Button intent="primary" outline fullWidth>
-            Secondary Button
+          <Button intent="inverted" size="lg" fullWidth onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="secondary" size="lg" fullWidth onClick={handleClick}>
+            Button
           </Button>
           <Button
-            intent="primary"
+            size="lg"
+            fullWidth
             onClick={handleClick}
             isLoading
-            size="lg"
-            fullWidth
-            loadingText="Loading..."
+            loadingText="Loading.."
           >
-            Loading
+            Button
           </Button>
         </div>
       </div>

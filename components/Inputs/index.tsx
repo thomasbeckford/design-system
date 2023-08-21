@@ -1,16 +1,28 @@
 import Card from '@ui/Card'
 import Input from '@ui/Input'
+import Twitter from '@/public/icons/twitter.svg'
 
 export default function Inputs() {
   return (
     <Card title="Inputs">
-      <Input placeholder="Enter your name" size="small" />
-      <Input variant="outlined" size="medium" placeholder="Search" />
-      <Input
-        variant="outlined"
-        size="large"
-        placeholder="Type your message here"
-      />
+      <div className="flex flex-col gap-3">
+        <div>
+          <Input placeholder="Search by name or paste address" size="sm" />
+        </div>
+        <div>
+          <Input
+            placeholder="Search by name or paste address"
+            leftIcon={<Twitter />}
+          />
+        </div>
+        <div>
+          <Input
+            isDisabled
+            placeholder="Search by name or paste address"
+            size="lg"
+          />
+        </div>
+      </div>
     </Card>
   )
 }
