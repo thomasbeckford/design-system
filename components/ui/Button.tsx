@@ -7,17 +7,20 @@ export interface Props
     VariantProps<typeof buttonStyles> {}
 
 const buttonStyles = cva(
-  'rounded-md transition-all duration-200 ease-in-out active:scale-95',
+  'rounded-sm transition-all duration-300 ease-in-out block  ',
   {
     variants: {
       intent: {
-        primary: 'bg-[#1D9384]',
-        secondary: 'bg-[#374151]',
-        inverted: 'bg-[#60E6C526] text-[#60E6C5] ',
+        primary: 'bg-[#1D9384] ',
+        danger: 'bg-[#F82F2F] ',
+        secondary: 'bg-[#374151] active:ring-1 ring-white',
+        inverted: 'bg-[#60E6C526] text-[#60E6C5] active:ring-1 ring-[#60E6C5]',
+        invertedFlat:
+          'bg-transparent text-[#60E6C5] active:ring-1 ring-[#60E6C5] hover:bg-[#60E6C526]',
 
-        success: 'bg-ciDarkest',
-        pending: 'bg-warningDarkest',
-        danger: 'bg-dangerDarkest',
+        successDark: 'bg-ciDarkest',
+        pendingDark: 'bg-warningDarkest',
+        dangerDark: 'bg-dangerDarkest',
       },
       size: {
         sm: 'px-[0.75rem] h-[2rem] text-[0.875rem]',
@@ -26,7 +29,7 @@ const buttonStyles = cva(
       },
 
       fullWidth: {
-        true: 'w-full active:scale-95',
+        true: 'w-full',
       },
       isLoading: {
         true: 'pointer-events-none opacity-80',
@@ -63,7 +66,7 @@ const Button: React.FC<Props> = ({
   onClick,
   addClass,
 }: Props) => {
-  const iconSize = `w-[1em] h-[1em] flex self-center`
+  const iconSize = `w-[1em] flex self-center`
 
   const WithLoadingIcon = () => {
     const SpinnerSize = () => (
@@ -79,13 +82,6 @@ const Button: React.FC<Props> = ({
     )
   }
 
-  const WithLeftIcon = () => (
-    <div className="flex items-center gap-2 justify-center h-full">
-      <p className={`${iconSize} fill-white flex`}>{leftIcon}</p>
-      <p>{children}</p>
-    </div>
-  )
-
   return (
     <button
       className={buttonStyles({
@@ -97,7 +93,16 @@ const Button: React.FC<Props> = ({
       })}
       onClick={onClick}
     >
-      {isLoading ? <WithLoadingIcon /> : leftIcon ? <WithLeftIcon /> : children}
+      {isLoading ? (
+        <WithLoadingIcon />
+      ) : leftIcon ? (
+        <div className="flex items-center gap-2 justify-center h-full">
+          <span className={`${iconSize} fill-white flex`}>{leftIcon}</span>
+          <span className={`text-${size}`}>{children}</span>
+        </div>
+      ) : (
+        children
+      )}
     </button>
   )
 }

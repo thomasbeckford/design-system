@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Navbar() {
   return (
-    <aside className=" text-white w-1/6 p-4">
+    <aside className=" text-white  p-4">
       <h2 className="text-xl font-bold mb-4">Components</h2>
 
       <ul>

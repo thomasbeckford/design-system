@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '@ui/Button'
 import { useContext } from 'react'
 import { NotificationsContext } from '@/providers/Notifications'
+import Card from '@ui/Card'
 
 const Notifications: React.FC = () => {
   const { showNotification } = useContext(NotificationsContext)
@@ -31,18 +32,20 @@ const Notifications: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5 w-1/6">
-      <Button intent="success" onClick={handleShowSuccess}>
-        Show Success Notification
-      </Button>
-      <Button intent="pending" onClick={handleShowPending}>
-        Show Pending Notification
-      </Button>
+    <Card title="Notifications">
+      <div className="space-y-5">
+        <Button intent="successDark" onClick={handleShowSuccess}>
+          Success Notification
+        </Button>
+        <Button intent="pendingDark" onClick={handleShowPending}>
+          Pending Notification
+        </Button>
 
-      <Button intent="danger" onClick={handleShowDanger}>
-        Show Pending Notification
-      </Button>
-    </div>
+        <Button intent="dangerDark" onClick={handleShowDanger}>
+          Pending Notification
+        </Button>
+      </div>
+    </Card>
   )
 }
 

@@ -55,13 +55,13 @@ const Input: React.FC<InputProps> = ({
   })
 
   const WithLeftIcon = () => (
-    <div className={`relative flex h-full`}>
+    <div className={`relative flex items-center h-full `}>
       <span
-        className={`absolute w-20 flex items-center pl-1 ${iconSize} fill-white`}
+        className={` flex items-center w-fit absolute pl-2 ${iconSize} fill-white`}
       >
         {leftIcon}
       </span>
-      <input {...rest} className={`${inputClasses} pl-8 `} />
+      <input {...rest} className={` ${inputClasses} pl-10`} />
     </div>
   )
 
