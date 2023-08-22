@@ -7,7 +7,7 @@ export interface Props
     VariantProps<typeof buttonStyles> {}
 
 const buttonStyles = cva(
-  'rounded-sm transition-all duration-300 ease-in-out block  ',
+  'rounded-sm transition-all duration-200 ease-out-in block  ',
   {
     variants: {
       intent: {
@@ -23,9 +23,9 @@ const buttonStyles = cva(
         dangerDark: 'bg-dangerDarkest',
       },
       size: {
-        sm: 'px-[0.75rem] h-[2rem] text-[0.875rem]',
-        md: 'px-[1rem] h-[2.5rem] text-[1rem]',
-        lg: 'px-[1.5rem] h-[3rem] text-[1.125rem]',
+        sm: 'px-[1rem] h-[2.5rem] text-[1rem]',
+        md: 'px-[1.5rem] h-[3rem] text-[1.125rem]',
+        lg: 'px-[2rem] h-[3.5rem] text-[1.250rem]',
       },
 
       fullWidth: {
@@ -66,7 +66,11 @@ const Button: React.FC<Props> = ({
   onClick,
   addClass,
 }: Props) => {
-  const iconSize = `w-[1em] flex self-center`
+  const getIconSize = (size: string) => {
+    const currentSize =
+      size === 'sm' ? 'w-[20px] h-[20px]' : 'w-[24px] h-[24px]'
+    return ` flex self-center items-center ${currentSize}`
+  }
 
   const WithLoadingIcon = () => {
     const SpinnerSize = () => (
@@ -97,7 +101,9 @@ const Button: React.FC<Props> = ({
         <WithLoadingIcon />
       ) : leftIcon ? (
         <div className="flex items-center gap-2 justify-center h-full">
-          <span className={`${iconSize} fill-white flex`}>{leftIcon}</span>
+          <span className={`${getIconSize(size)} fill-white flex`}>
+            {leftIcon}
+          </span>
           <span className={`text-${size}`}>{children}</span>
         </div>
       ) : (

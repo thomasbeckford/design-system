@@ -1,6 +1,6 @@
 import Button from '@ui/Button'
 import Card from '@ui/Card'
-import Twitter from '@/public/icons/twitter.svg'
+import Comment from '@/public/icons/comment.svg'
 
 export default function Buttons() {
   const handleClick = () => {
@@ -23,7 +23,7 @@ export default function Buttons() {
             intent="secondary"
             size="sm"
             onClick={handleClick}
-            leftIcon={<Twitter />}
+            leftIcon={<Comment />}
           >
             Button
           </Button>
@@ -54,7 +54,7 @@ export default function Buttons() {
           <Button
             intent="secondary"
             onClick={handleClick}
-            leftIcon={<Twitter />}
+            leftIcon={<Comment />}
           >
             Button
           </Button>
@@ -86,7 +86,7 @@ export default function Buttons() {
             intent="secondary"
             size="lg"
             onClick={handleClick}
-            leftIcon={<Twitter />}
+            leftIcon={<Comment />}
           >
             Button
           </Button>
@@ -119,7 +119,7 @@ export default function Buttons() {
             size="lg"
             fullWidth
             onClick={handleClick}
-            leftIcon={<Twitter />}
+            leftIcon={<Comment />}
           >
             Button
           </Button>
