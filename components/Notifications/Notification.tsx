@@ -26,7 +26,7 @@ const Notification: React.FC<NotificationProps> = ({
   }
 
   return (
-    <div className="w-[365px] h-10">
+    <div className="w-[365px] h-10 absolute right-4">
       <div className="bg-ciDarkest flex items-center p-1 rounded-t-sm justify-between">
         <div className="flex items-center gap-1">
           <SuccessIcon />
