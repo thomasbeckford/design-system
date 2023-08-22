@@ -57,11 +57,11 @@ const Input: React.FC<InputProps> = ({
   const WithLeftIcon = () => (
     <div className={`relative flex h-full`}>
       <span
-        className={`absolute  w-12 pl-2 flex items-center ${iconSize} fill-white`}
+        className={`absolute w-20 flex items-center pl-1 ${iconSize} fill-white`}
       >
         {leftIcon}
       </span>
-      <input {...rest} className={`${inputClasses} pl-9 `} />
+      <input {...rest} className={`${inputClasses} pl-8 `} />
     </div>
   )
 

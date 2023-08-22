@@ -50,20 +50,18 @@ const Switch: React.FC<SwitchProps> = ({
     ...addClass,
   })
 
-  const toggleClass = ''
-
   return (
     <div className="flex gap-2">
       <div className="flex flex-col justify-center items-center">
         <div
-          className="bg-ciTrans15 md:w-12 md:h-7 w-16 h-6 flex items-center rounded-md p-1 cursor-pointer"
+          className="bg-ciTrans15 w-12 h-8  flex items-center rounded-md p-1 cursor-pointer"
           onClick={handleClick}
           {...rest}
         >
           <div
             className={`${
-              isActive ? 'bg-ci' : 'bg-white transform translate-x-5'
-            } md:w-5 md:h-5 h-5 w-5 rounded-sm shadow-md transform duration-300 ease-in-out`}
+              isActive ? 'bg-ci translate-x-5' : 'bg-white transform '
+            }  h-5 w-5 rounded-sm shadow-md transform duration-300 ease-in-out `}
           ></div>
         </div>
       </div>

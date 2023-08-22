@@ -50,18 +50,6 @@ module.exports = {
       ],
     },
 
-    fontStyling: {
-      h1: 'font-sans font-medium text-2xl leading-xl',
-      h2: 'font-sans font-medium text-xl leading-lg',
-      h3: 'font-sans font-medium text-lg leading-lg',
-      h4: 'font-sans font-medium text-base leading-lg',
-      h5: 'font-sans font-medium text-sm leading-base',
-
-      subtitle:
-        'font-sans font-regular text-xs lineHeight-[16px] letterSpacing-[-2%]',
-      p: 'font-sans font-regular text-base leading-base letterSpacing-[-2%]',
-    },
-
     borderRadius: {
       xs: '2px',
       sm: '4px',

@@ -4,6 +4,7 @@ import Buttons from '@components/Buttons'
 import Inputs from '@components/Inputs'
 import Spinners from '@components/Spinners'
 import Switches from '@/components/Switches'
+import Notifications from '@/components/Notifications'
 
 export default function Component() {
   const { component } = useParams()
@@ -21,6 +22,9 @@ export default function Component() {
 
       case 'spinners':
         return <Spinners />
+
+      case 'notifications':
+        return <Notifications />
 
       default:
         return <div>No</div>

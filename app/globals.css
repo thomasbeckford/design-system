@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-sans font-medium text-2xl leading-xl;
+  }
+
+  h2 {
+    @apply font-sans font-medium text-xl leading-lg;
+  }
+
+  h3 {
+    @apply font-sans font-medium text-lg leading-lg;
+  }
+
+  h4 {
+    @apply font-sans font-medium text-base leading-lg;
+  }
+
+  h5 {
+    @apply font-sans font-medium text-sm leading-base;
+  }
+
+  subtitle {
+    @apply font-sans font-regular text-xs leading-[16px] tracking-[-0.02em];
+  }
+
+  p {
+    @apply font-sans font-regular text-base leading-base tracking-[-0.02em];
+  }
+}
