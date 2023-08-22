@@ -66,12 +66,6 @@ const Button: React.FC<Props> = ({
   onClick,
   addClass,
 }: Props) => {
-  const getIconSize = (size: string) => {
-    const currentSize =
-      size === 'sm' ? 'w-[20px] h-[20px]' : 'w-[24px] h-[24px]'
-    return ` flex self-center items-center ${currentSize}`
-  }
-
   const WithLoadingIcon = () => {
     const SpinnerSize = () => (
       <Spinner size={size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md'} />
@@ -100,8 +94,10 @@ const Button: React.FC<Props> = ({
       {isLoading ? (
         <WithLoadingIcon />
       ) : leftIcon ? (
-        <div className="flex items-center gap-2 justify-center h-full">
-          <span className={`${getIconSize(size)} fill-white flex`}>
+        <div className="flex items-center gap-1 justify-center h-full ">
+          <span
+            className={`${size === 'sm' ? 'w-[20px]' : 'w-[24px]'} fill-white`}
+          >
             {leftIcon}
           </span>
           <span className={`text-${size}`}>{children}</span>

@@ -18,6 +18,9 @@ export default function Buttons() {
           <Button intent="danger" size="sm" onClick={handleClick}>
             Button
           </Button>
+          <Button intent="pendingDark" size="sm" onClick={handleClick}>
+            Button
+          </Button>
 
           <Button
             intent="secondary"
@@ -51,6 +54,12 @@ export default function Buttons() {
           <Button intent="primary" onClick={handleClick}>
             Button
           </Button>
+          <Button intent="danger" onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="pendingDark" onClick={handleClick}>
+            Button
+          </Button>
           <Button
             intent="secondary"
             onClick={handleClick}
@@ -80,6 +89,12 @@ export default function Buttons() {
         <p>Large</p>
         <div className="flex gap-3 flex-col md:flex-row">
           <Button intent="primary" size="lg" onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="danger" size="lg" onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="pendingDark" size="lg" onClick={handleClick}>
             Button
           </Button>
           <Button
@@ -112,6 +127,17 @@ export default function Buttons() {
         <p>Full width</p>
         <div className="flex gap-3 flex-col ">
           <Button intent="primary" size="lg" fullWidth onClick={handleClick}>
+            Button
+          </Button>
+          <Button intent="danger" size="lg" fullWidth onClick={handleClick}>
+            Button
+          </Button>
+          <Button
+            intent="pendingDark"
+            size="lg"
+            fullWidth
+            onClick={handleClick}
+          >
             Button
           </Button>
           <Button
