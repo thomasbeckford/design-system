@@ -14,9 +14,34 @@ const Notifications: React.FC = () => {
     })
   }
 
+  const handleShowPending = () => {
+    showNotification({
+      title: 'Approve pending',
+      description: 'Approving FTM',
+      type: 'warning',
+    })
+  }
+
+  const handleShowDanger = () => {
+    showNotification({
+      title: 'Farm deposit failed',
+      description: 'Claiming 1003.44 TOKENS',
+      type: 'error',
+    })
+  }
+
   return (
-    <div>
-      <Button onClick={handleShowSuccess}>Show Success Notification</Button>
+    <div className="flex flex-col gap-5 w-1/6">
+      <Button intent="success" onClick={handleShowSuccess}>
+        Show Success Notification
+      </Button>
+      <Button intent="pending" onClick={handleShowPending}>
+        Show Pending Notification
+      </Button>
+
+      <Button intent="danger" onClick={handleShowDanger}>
+        Show Pending Notification
+      </Button>
     </div>
   )
 }

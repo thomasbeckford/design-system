@@ -14,6 +14,10 @@ const buttonStyles = cva(
         primary: 'bg-[#1D9384]',
         secondary: 'bg-[#374151]',
         inverted: 'bg-[#60E6C526] text-[#60E6C5] ',
+
+        success: 'bg-ciDarkest',
+        pending: 'bg-warningDarkest',
+        danger: 'bg-dangerDarkest',
       },
       size: {
         sm: 'px-[0.75rem] h-[2rem] text-[0.875rem]',

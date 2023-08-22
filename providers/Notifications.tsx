@@ -1,11 +1,12 @@
 'use client'
 
-import React, { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode, createContext, useState, useEffect } from 'react'
 import Notification from '@/components/Notifications/Notification'
 
 type NotificationContextProps = {
-  showNotification: (notification: Notification) => void
+  showNotification: (notification: Omit<Notification, 'id'>) => void
   removeNotification: (notificationId: string) => void
+  notifications: Notification[]
 }
 
 type NotificationProviderProps = {
@@ -21,49 +22,48 @@ export const NotificationsProvider: React.FC<NotificationProviderProps> = ({
 }) => {
   const [notifications, setNotifications] = useState<Notification[]>([])
 
-  const addNotification = (notification: Notification) => {
-    const newNotification = { ...notification, id: Date.now().toString() }
-    console.log('added new notification', newNotification)
+  const addNotification = (notification: Omit<Notification, 'id'>) => {
+    const id = Date.now().toString() // Using Date.now() as ID
+    const newNotification = { ...notification, id }
     setNotifications([...notifications, newNotification])
   }
 
   const removeNotification = (notificationId: string) => {
-    console.log('Removing notification', notificationId)
+    if (!notificationId) return
     const updatedNotifications = notifications.filter(
       (n) => n.id !== notificationId
     )
     setNotifications(updatedNotifications)
   }
 
-  const showNotification = (notification: Notification) => {
-    const id = Date.now().toString()
-    addNotification({
-      ...notification,
-      id,
-    })
-
-    setTimeout(() => {
-      removeNotification(id)
-    }, 3000)
+  const showNotification = (notification: Omit<Notification, 'id'>) => {
+    addNotification(notification)
   }
 
-  console.log('Notifications', notifications)
+  useEffect(() => {
+    const notificationCleanup = setInterval(() => {
+      const currentTime = Date.now()
+      const updatedNotifications = notifications.filter(
+        (notification) => currentTime - parseInt(notification.id) <= 2000 // 2 seconds in milliseconds
+      )
+      setNotifications(updatedNotifications)
+    }, 1000) // Check every 1 second
+
+    return () => {
+      clearInterval(notificationCleanup)
+    }
+  }, [notifications])
 
   return (
     <NotificationsContext.Provider
       value={{
         showNotification,
         removeNotification,
+        notifications,
       }}
     >
       {children}
-      {notifications.map((notification) => (
-        <Notification
-          key={notification.id}
-          notification={notification}
-          removeNotification={removeNotification}
-        />
-      ))}
+      <Notification />
     </NotificationsContext.Provider>
   )
 }
