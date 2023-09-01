@@ -11,8 +11,8 @@ const buttonStyles = cva(
   {
     variants: {
       intent: {
-        primary: 'bg-[#1D9384] ',
-        danger: 'bg-[#F82F2F] ',
+        primary: 'bg-[#1D9384] transition-all active:scale-95',
+        danger: 'bg-[#F82F2F] transition-all active:scale-95',
         secondary: 'bg-[#374151] active:ring-1 ring-white',
         inverted: 'bg-[#60E6C526] text-[#60E6C5] active:ring-1 ring-[#60E6C5]',
         invertedFlat:
@@ -32,7 +32,10 @@ const buttonStyles = cva(
         true: 'w-full',
       },
       isLoading: {
-        true: 'pointer-events-none opacity-80',
+        true: 'pointer-events-none opacity-100',
+      },
+      isDisabled: {
+        true: 'pointer-events-none opacity-50',
       },
     },
     defaultVariants: {

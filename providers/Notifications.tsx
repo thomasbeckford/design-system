@@ -39,15 +39,28 @@ export const NotificationsProvider: React.FC<NotificationProviderProps> = ({
   const showNotification = (notification: Omit<Notification, 'id'>) => {
     addNotification(notification)
   }
-
   useEffect(() => {
     const notificationCleanup = setInterval(() => {
       const currentTime = Date.now()
-      const updatedNotifications = notifications.filter(
-        (notification) => currentTime - parseInt(notification.id) <= 2000 // 2 seconds in milliseconds
-      )
-      setNotifications(updatedNotifications)
-    }, 1000) // Check every 1 second
+      const updatedNotifications = notifications
+        .map((notification) => {
+          const notificationTime = parseInt(notification.id)
+          const elapsedTime = currentTime - notificationTime
+
+          const fadeDuration = 1800
+
+          if (elapsedTime <= fadeDuration) {
+            // Calculate the opacity based on the elapsed time
+            const opacity = 1 - elapsedTime / fadeDuration
+            return { ...notification, opacity }
+          } else {
+            return null // Notification has faded out completely
+          }
+        })
+        .filter((notification) => notification !== null) // Remove null values
+
+      setNotifications(updatedNotifications as Notification[]) // Cast to Notification[]
+    }, 100) // Check every 0.1 seconds for smoother animation
 
     return () => {
       clearInterval(notificationCleanup)

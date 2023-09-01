@@ -18,9 +18,6 @@ export default function Buttons() {
           <Button intent="danger" size="sm" onClick={handleClick}>
             Button
           </Button>
-          <Button intent="pendingDark" size="sm" onClick={handleClick}>
-            Button
-          </Button>
 
           <Button
             intent="secondary"
@@ -36,9 +33,7 @@ export default function Buttons() {
           <Button intent="invertedFlat" size="sm" onClick={handleClick}>
             Button
           </Button>
-          <Button intent="secondary" size="sm" onClick={handleClick}>
-            Button
-          </Button>
+
           <Button
             size="sm"
             onClick={handleClick}
@@ -57,9 +52,7 @@ export default function Buttons() {
           <Button intent="danger" onClick={handleClick}>
             Button
           </Button>
-          <Button intent="pendingDark" onClick={handleClick}>
-            Button
-          </Button>
+
           <Button
             intent="secondary"
             onClick={handleClick}
@@ -73,13 +66,11 @@ export default function Buttons() {
           <Button intent="invertedFlat" onClick={handleClick}>
             Button
           </Button>
-          <Button intent="secondary" onClick={handleClick}>
-            Button
-          </Button>
+
           <Button
             onClick={handleClick}
             isLoading
-            loadingText="Still loading..."
+            loadingText="Submitting..."
             spinnerPlacement="end"
           >
             Button
@@ -94,9 +85,7 @@ export default function Buttons() {
           <Button intent="danger" size="lg" onClick={handleClick}>
             Button
           </Button>
-          <Button intent="pendingDark" size="lg" onClick={handleClick}>
-            Button
-          </Button>
+
           <Button
             intent="secondary"
             size="lg"
@@ -111,9 +100,7 @@ export default function Buttons() {
           <Button intent="invertedFlat" size="lg" onClick={handleClick}>
             Button
           </Button>
-          <Button intent="secondary" size="lg" onClick={handleClick}>
-            Button
-          </Button>
+
           <Button
             size="lg"
             onClick={handleClick}
@@ -132,14 +119,7 @@ export default function Buttons() {
           <Button intent="danger" size="lg" fullWidth onClick={handleClick}>
             Button
           </Button>
-          <Button
-            intent="pendingDark"
-            size="lg"
-            fullWidth
-            onClick={handleClick}
-          >
-            Button
-          </Button>
+
           <Button
             intent="secondary"
             size="lg"
@@ -160,9 +140,7 @@ export default function Buttons() {
           >
             Button
           </Button>
-          <Button intent="secondary" size="lg" fullWidth onClick={handleClick}>
-            Button
-          </Button>
+
           <Button
             size="lg"
             fullWidth
